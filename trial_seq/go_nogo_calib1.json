@@ -1,0 +1,362 @@
+var trial_param = [
+    {
+        "trial_num": "1",
+        "cue1_stimulus": "cue1_orangeHigh_blueLow",
+        "cue1_duration": "1000",
+        "isi": "900",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "2",
+        "cue1_stimulus": "cue1_orangeHigh_blueLow",
+        "cue1_duration": "1000",
+        "isi": "718",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "3",
+        "cue1_stimulus": "cue1_orangeHigh_blueLow",
+        "cue1_duration": "1000",
+        "isi": "767",
+        "cue2_stimulus": "cue2_blue",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": " "
+    },
+    {
+        "trial_num": "4",
+        "cue1_stimulus": "cue1_orangeHigh_blueLow",
+        "cue1_duration": "1000",
+        "isi": "833",
+        "cue2_stimulus": "cue2_blue",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": " "
+    },
+    {
+        "trial_num": "5",
+        "cue1_stimulus": "cue1_blueHigh_orangeLow",
+        "cue1_duration": "1000",
+        "isi": "718",
+        "cue2_stimulus": "cue2_blue",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": " "
+    },
+    {
+        "trial_num": "6",
+        "cue1_stimulus": "cue1_orange",
+        "cue1_duration": "1000",
+        "isi": "833",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "7",
+        "cue1_stimulus": "cue1_blueHigh_orangeLow",
+        "cue1_duration": "1000",
+        "isi": "900",
+        "cue2_stimulus": "cue2_blue",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": " "
+    },
+    {
+        "trial_num": "8",
+        "cue1_stimulus": "cue1_blueHigh_orangeLow",
+        "cue1_duration": "1000",
+        "isi": "809",
+        "cue2_stimulus": "cue2_blue",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": " "
+    },
+    {
+        "trial_num": "9",
+        "cue1_stimulus": "cue1_orangeHigh_blueLow",
+        "cue1_duration": "1000",
+        "isi": "864",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "10",
+        "cue1_stimulus": "cue1_orangeHigh_blueLow",
+        "cue1_duration": "1000",
+        "isi": "700",
+        "cue2_stimulus": "cue2_blue",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": " "
+    },
+    {
+        "trial_num": "11",
+        "cue1_stimulus": "cue1_blueHigh_orangeLow",
+        "cue1_duration": "1000",
+        "isi": "736",
+        "cue2_stimulus": "cue2_blue",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": " "
+    },
+    {
+        "trial_num": "12",
+        "cue1_stimulus": "cue1_orangeHigh_blueLow",
+        "cue1_duration": "1000",
+        "isi": "827",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "13",
+        "cue1_stimulus": "cue1_blueHigh_orangeLow",
+        "cue1_duration": "1000",
+        "isi": "700",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "14",
+        "cue1_stimulus": "cue1_blueHigh_orangeLow",
+        "cue1_duration": "1000",
+        "isi": "864",
+        "cue2_stimulus": "cue2_blue",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": " "
+    },
+    {
+        "trial_num": "15",
+        "cue1_stimulus": "cue1_blueHigh_orangeLow",
+        "cue1_duration": "1000",
+        "isi": "755",
+        "cue2_stimulus": "cue2_blue",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": " "
+    },
+    {
+        "trial_num": "16",
+        "cue1_stimulus": "cue1_blueHigh_orangeLow",
+        "cue1_duration": "1000",
+        "isi": "700",
+        "cue2_stimulus": "cue2_blue",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": " "
+    },
+    {
+        "trial_num": "17",
+        "cue1_stimulus": "cue1_orangeHigh_blueLow",
+        "cue1_duration": "1000",
+        "isi": "845",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "18",
+        "cue1_stimulus": "cue1_orangeHigh_blueLow",
+        "cue1_duration": "1000",
+        "isi": "700",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "19",
+        "cue1_stimulus": "cue1_orangeHigh_blueLow",
+        "cue1_duration": "1000",
+        "isi": "773",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "20",
+        "cue1_stimulus": "cue1_orangeHigh_blueLow",
+        "cue1_duration": "1000",
+        "isi": "882",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "21",
+        "cue1_stimulus": "cue1_orangeHigh_blueLow",
+        "cue1_duration": "1000",
+        "isi": "809",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "22",
+        "cue1_stimulus": "cue1_orangeHigh_blueLow",
+        "cue1_duration": "1000",
+        "isi": "791",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "23",
+        "cue1_stimulus": "cue1_blueHigh_orangeLow",
+        "cue1_duration": "1000",
+        "isi": "833",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "24",
+        "cue1_stimulus": "cue1_blueHigh_orangeLow",
+        "cue1_duration": "1000",
+        "isi": "882",
+        "cue2_stimulus": "cue2_blue",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": " "
+    },
+    {
+        "trial_num": "25",
+        "cue1_stimulus": "cue1_orange",
+        "cue1_duration": "1000",
+        "isi": "700",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "26",
+        "cue1_stimulus": "cue1_orangeHigh_blueLow",
+        "cue1_duration": "1000",
+        "isi": "900",
+        "cue2_stimulus": "cue2_blue",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": " "
+    },
+    {
+        "trial_num": "27",
+        "cue1_stimulus": "cue1_orangeHigh_blueLow",
+        "cue1_duration": "1000",
+        "isi": "736",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "28",
+        "cue1_stimulus": "cue1_orange",
+        "cue1_duration": "1000",
+        "isi": "767",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "29",
+        "cue1_stimulus": "cue1_orange",
+        "cue1_duration": "1000",
+        "isi": "900",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "30",
+        "cue1_stimulus": "cue1_blueHigh_orangeLow",
+        "cue1_duration": "1000",
+        "isi": "767",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "31",
+        "cue1_stimulus": "cue1_orangeHigh_blueLow",
+        "cue1_duration": "1000",
+        "isi": "755",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "32",
+        "cue1_stimulus": "cue1_blueHigh_orangeLow",
+        "cue1_duration": "1000",
+        "isi": "845",
+        "cue2_stimulus": "cue2_blue",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": " "
+    },
+    {
+        "trial_num": "33",
+        "cue1_stimulus": "cue1_blueHigh_orangeLow",
+        "cue1_duration": "1000",
+        "isi": "773",
+        "cue2_stimulus": "cue2_blue",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": " "
+    },
+    {
+        "trial_num": "34",
+        "cue1_stimulus": "cue1_blueHigh_orangeLow",
+        "cue1_duration": "1000",
+        "isi": "900",
+        "cue2_stimulus": "cue2_orange",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": null
+    },
+    {
+        "trial_num": "35",
+        "cue1_stimulus": "cue1_blueHigh_orangeLow",
+        "cue1_duration": "1000",
+        "isi": "791",
+        "cue2_stimulus": "cue2_blue",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": " "
+    },
+    {
+        "trial_num": "36",
+        "cue1_stimulus": "cue1_blueHigh_orangeLow",
+        "cue1_duration": "1000",
+        "isi": "827",
+        "cue2_stimulus": "cue2_blue",
+        "cue2_duration": "2000",
+        "iti": "1000",
+        "correct_response": " "
+    }
+]

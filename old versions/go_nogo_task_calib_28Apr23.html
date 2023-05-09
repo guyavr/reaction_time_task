@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Go/No-go</title>
+    <script src="jspsych/jspsych.js"></script>
+    <script src="jspsych/plugin-html-keyboard-response.js"></script>
+    <script src="jspsych/plugin-image-keyboard-response.js"></script>
+    <script src="jspsych/plugin-preload.js"></script>
+    <script src="jspsych/plugin-call-function.js"></script>
+    <link href="jspsych/jspsych.css" rel="stylesheet" type="text/css" />
+
+    <script src="trial_seq/go_nogo_calib1.json"></script>
+  </head>
+  <body></body>
+  <script>
+  
+  //console.log(trial_param);
+
+  var rt_goal = 700; // should be based on the standard RT task (e.g., 125% of mean RT)
+
+  var n_trials=trial_param.length;
+    /* initialize jsPsych */
+    var jsPsych = initJsPsych({
+        on_finish: function() {
+            jsPsych.data.displayData('csv');
+            //jsPsych.data.get().filter({task: 'response'}).localSave('csv','mydata.csv');
+        }
+    });
+
+    /* preload images */
+    var preload = {
+        type: jsPsychPreload,
+        images: [
+            'img/cue1_blue.png',
+            'img/cue1_orange.png',
+            'img/cue1_blueHigh_orangeLow.png',
+            'img/cue1_orangeHigh_blueLow.png',
+            'img/cue2_blue.png',
+            'img/cue2_orange.png',
+        ],
+        
+    };
+    console.log(preload);
+
+    /* define welcome message trial */
+    var welcome = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: "Welcome to the experiment. Press any key to begin."
+    };
+    
+    /* define instructions trial */
+    var instructions_1 = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: `
+        <p>In this part of the experiment, you are again asked to press </p>
+        <p>the SPACE key on the keyboard as fast as the <strong>blue square</strong> appears on the screen.</p>
+        <p>This time, sometimes an <strong>orange square</strong> will appear instead.</p>
+        <p>In these cases, do not press any key!</p>
+        
+        <p>If the area of the disk is mostly <strong>blue</strong>, it is more likely that the square</p>
+        <p>that will appear shortly after is also <strong>blue</strong> so you should prepare to respond.</p>
+        
+        <div style='width: 800px; height: 380px;'>
+        <div style='float: left'><img src='img/cue2_blue.png'></img>
+        <p class='small'><strong>Press the SPACE key as fast as possible</strong></p></div>
+        <div style='float: right'><img src='img/cue2_orange.png'></img>
+        <p class='small'><strong>Do not press any key</strong></p></div>
+        </div>
+
+        <p>Press any key to continue.</p>
+        `,
+        
+        //post_trial_gap: 2000
+    };
+    
+    var instructions_2 = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: `
+        <p>Like in your previous task, there will be another cue - a colored disk -</p>
+        <p>that will appear just before the blue/orange squares.</p>
+        <p>The colors of the disk will give you a hint about</p> 
+        <p>whether the next cue will be a blue or an orange square.</p> 
+
+        <p>If the area of the disk is mostly <strong>blue</strong>, it is more likely that the square</p>
+        <p>that will appear shortly after is also <strong>blue</strong></p>
+        <p>so you should prepare to respond quickly when the blue square is presented </p
+        
+        <div style='width: 800px; height: 380px;'>
+        <div style='float: left'>
+            <div style='width: 400px; height: 70px;'></div>
+            <img src='img/cue1_blueHigh_orangeLow.png'></img>
+            
+            <p class='small'><strong>First cue: Prepare</strong></p>
+        </div>
+        <div style='float: right'>
+            <div style='width: 400px; height: 70px;'></div>
+            <img src='img/cue2_blue.png'></img>
+            
+            <p class='small'><strong>Second cue: Press the SPACE key</strong></p>
+        </div>
+        <div style='float: right'><img src='img/cue2_blue.png'></img>
+        <p class='small'><strong>Second cue: Press the SPACE key</strong></p></div>
+        </div>
+
+        <p>BUT BE CAREFUL: Although less likely, we sometimes trick you and present</p>
+        <p>an <strong>orange square</strong> after the "mostly blue" disk</p>
+        <p>In these cases, you should halt your response and not press any key!</p>
+
+        <div style='width: 800px; height: 380px;'>
+        <div style='float: left'>
+            <div style='width: 200px; height: 70px;'></div>
+            <img src='img/cue1_blueHigh_orangeLow.png'></img>
+            
+            <p class='small'><strong>First cue: Prepare</strong></p>
+        </div>
+        <div style='float: right'><img src='img/cue2_orange.png'></img>
+        <p class='small'><strong>Second cue: Do not press any key</strong></p></div>
+        </div>
+        
+        <p>Press any key to continue.</p>
+        `,
+        
+        /*`
+        <p>In this experiment, a square will appear in the center
+        of the screen.</p><p>If the square is <strong>blue</strong>,
+        press the SPACE key on the keyboard as fast as you can.</p>
+        <p>If the square is <strong>orange</strong>, do not press
+        any key. </p>
+        <div style='width: 700px;'>
+        <div style='float: left;'><img src='img/cue2_blue.png'></img>
+        <p class='small'><strong>Press the SPACE key</strong></p></div>
+        <div style='float: right;'><img src='img/cue2_orange.png'></img>
+        <p class='small'><strong>Do not press a key</strong></p></div>
+        </div>
+        <p>Press any key to begin.</p>
+        `,*/
+        post_trial_gap: 2000
+    };
+
+    /* define trial info array for timeline variables */
+    var trial_info = [];
+    for (j = 0; j < n_trials; j++) {
+        trial_info[j] = {
+            trial_num: trial_param[j].trial_num,
+            cue1_stimulus: "img/"+trial_param[j].cue1_stimulus+".png",
+            cue1_duration: trial_param[j].cue1_duration,
+            isi: trial_param[j].isi, // inter-stimulus-interval
+            cue2_stimulus: "img/"+trial_param[j].cue2_stimulus+".png",
+            cue2_duration: trial_param[j].cue2_duration,
+            iti: trial_param[j].iti, // inter-trial-interval
+            correct_response: trial_param[j].correct_response,
+        };
+    }
+
+    /* define cue1 and cue2 events, together with feedback */
+    var cue1 = {
+        type: jsPsychImageKeyboardResponse,
+        //stimulus: '<div style="font-size:60px;">+</div>',
+        stimulus: jsPsych.timelineVariable('cue1_stimulus'),
+        choices: "NO_KEYS",
+        trial_duration: jsPsych.timelineVariable('cue1_duration'),
+        post_trial_gap: jsPsych.timelineVariable('isi'),
+        data: {
+            task: 'cue1'
+        }
+
+    };
+
+    var cue2 = {
+        type: jsPsychImageKeyboardResponse,
+        stimulus: jsPsych.timelineVariable('cue2_stimulus'),
+        choices: ' ',
+        trial_duration: jsPsych.timelineVariable('cue2_duration'),
+        
+        data: {
+            task: 'cue2',
+
+            // To save all relevant data of a trial (including from cue1)
+            trial_num: jsPsych.timelineVariable('trial_num'),
+            cue1_stimulus: jsPsych.timelineVariable('cue1_stimulus'),
+            cue1_duration: jsPsych.timelineVariable('cue1_duration'),
+            isi: jsPsych.timelineVariable('isi'),
+
+            cue2_stimulus: jsPsych.timelineVariable('cue2_stimulus'),
+            cue2_duration: jsPsych.timelineVariable('cue2_duration'),
+            iti: jsPsych.timelineVariable('iti'),
+            correct_response: jsPsych.timelineVariable('correct_response'),            
+        },
+        
+        on_finish: function(data){
+            data.TrialNum = data.trial_num
+            data.Cue1_Stimulus = data.cue1_stimulus
+            data.Cue1_Duration = data.cue1_duration
+            data.ISI = data.isi
+
+            data.Cue2_Stimulus = data.cue2_stimulus
+            data.Cue2_Duration = data.cue2_duration
+            data.ITI = data.iti
+            
+            data.Correct_Response = data.correct_response
+            data.Response = data.response
+            data.IsCorrect = jsPsych.pluginAPI.compareKeys(data.response, data.correct_response) // change to incorporate reation time as well!!!
+            
+            data.RT = jsPsych.data.get().last(1).values()[0].rt
+        }
+        
+    };
+
+    var feedback = {
+        type: jsPsychHtmlKeyboardResponse,
+        
+        trial_duration: 1500,
+        post_trial_gap: jsPsych.timelineVariable('iti'), 
+
+        stimulus: function() {
+            
+            if ( jsPsych.data.get().last(1).values()[0].IsCorrect & jsPsych.data.get().last(1).values()[0].rt < rt_goal) {
+                return `<p style="font-size:70px; color: green">Correct!</p>
+                        <p style="font-size:80px; color: green">+1</p>`;
+            } else if ( jsPsych.data.get().last(1).values()[0].IsCorrect & jsPsych.data.get().last(1).values()[0].rt > rt_goal) {
+                return `<p style="font-size:70px; color: black">Try to respond faster</p>
+                        <p style="font-size:80px; color: red">-1</p>`;
+            } else {
+                if (jsPsych.data.get().last(1).values()[0].response == " ") {
+                    return `<p style="font-size:70px; color: black">Do not respond on</p>
+                            <p style="font-size:70px; color: black"><strong>orange</strong> squares</p>
+                            <p style="font-size:80px; color: red">-1</p>`;
+                } else {
+                    return `<p style="font-size:70px; color: black">Press the key</p>
+                            <p style="font-size:70px; color: black">on <strong>blue</strong> squares</p>
+                            <p style="font-size:80px; color: red">-1</p>`;
+                }
+            }
+            
+        }
+    };
+
+    /* define experiment (trial) procedure */
+    var experiment_procedure = {
+        timeline: [cue1, cue2, feedback],
+        timeline_variables: trial_info,
+        randomize_order: false,
+        repetitions: 1
+    };
+
+    /* save data */
+    var save_data = {
+		type: jsPsychCallFunction,
+		func: function(){
+            //
+            jsPsych.data.get().filter({task: 'cue2'}).ignore([
+                'internal_node_id',
+                'trial_type',
+                'trial_index',
+                'task',
+                'stimulus',
+                'rt',
+                'response',
+                'trial_num',
+                'cue1_stimulus',
+                'cue1_duration',
+                'isi',
+                'cue2_stimulus',
+                'cue2_duration',
+                'iti',
+                'correct_response'
+            ]).localSave('csv','mydata.csv');		
+		},
+	};
+
+    
+
+    /* define debrief */
+    var debrief_block = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: function() {
+            var trials = jsPsych.data.get().filter({task: 'cue2'});
+            var correct_trials = trials.filter({IsCorrect: true});
+            var accuracy = Math.round(correct_trials.count() / trials.count() * 100);
+            var rt = Math.round(correct_trials.select('RT').mean());
+
+            return `<p>You responded correctly on ${accuracy}% of the trials.</p>
+                <p>Your average response time was ${rt}ms.</p>
+                <p>Press any key to complete the experiment. Thank you!</p>`;
+
+        }
+    };
+
+    /* create timeline */
+    var timeline = [];
+    timeline.push(preload);
+    timeline.push(welcome);
+    timeline.push(instructions_1);
+    timeline.push(instructions_2);
+    timeline.push(experiment_procedure);
+    timeline.push(save_data);
+    timeline.push(debrief_block);
+
+    console.log(timeline);
+
+    /* start the experiment */
+    jsPsych.run(timeline);
+
+  </script>
+</html>
+

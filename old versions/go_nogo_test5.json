@@ -1,0 +1,26 @@
+[
+    {
+        "trial_num": "1",
+        "stimulus": "blue",
+        "correct_response": " ",
+        "fixation_duration": "500"
+    },
+    {
+        "trial_num": "2",
+        "stimulus": "orange",
+        "correct_response": "null",
+        "fixation_duration": "600"
+    },
+    {
+        "trial_num": "3",
+        "stimulus": "orange",
+        "correct_response": "null",
+        "fixation_duration": "400"
+    },
+    {
+        "trial_num": "4",
+        "stimulus": "blue",
+        "correct_response": " ",
+        "fixation_duration": "700"
+    }
+]
