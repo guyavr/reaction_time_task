@@ -7,5 +7,6 @@ GOTO file_check
 :file_exists
 ECHO "Behavior files downloaded, moving to Dropbox..."
 move /-Y "C:\Users\%username%\Downloads\*_reaction_time_task_*.csv" "C:\Users\%username%\Starr Lab Dropbox\Projects\Go_NoGo\behavioral_data"
+move /-Y "C:\Users\%username%\Downloads\*_reaction_time_task_*.csv" "C:\Users\%username%\Starr Lab Dropbox\Projects\Go_NoGo\reaction_time_task_behavioralData.csv"
 start /b "" "C:\xampp\apache_stop.bat"
 :exit
