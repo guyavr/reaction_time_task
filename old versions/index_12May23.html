@@ -30,7 +30,6 @@
     var preload = {
         type: jsPsychPreload,
         images: [
-            'img/BLUE_BLUE.png',
             'img/cue1_blue.png',
             'img/cue2_blue.png'
         ]
@@ -47,12 +46,23 @@
     var instructions = {
         type: jsPsychHtmlKeyboardResponse,
         stimulus: `
-        <p>In this experiment, your goal is to press the SPACE key as fast as possible when the <strong>blue square</strong> appears.</p>
-        <p>To help you get ready, a <strong>blue circle</strong> will appear shortly before the blue square.</p>
-        <p>Remember: Do NOT press SPACE until the blue square appears!</p>
+        <p>In this part of the experiment, two cues - a small blue disk and a big blue square - </p>
+        <p>will appear in the center of the screen one after the other.</p>
+        <p>The blue <strong>disk</strong> will appear first, and the blue <strong>square</strong> will appear after.</p>
+        <p>Your task is to press the SPACE key on the keyboard as fast as you see the <strong>blue square</strong>.</p>
+        <p>Note that the blue square will appear <i>shortly</i> after the blue disk,</p>
+        <p>so you should start preparing to press the key already when the blue disk appears.</p>
+        <p>Remember: Do not press the SPACE key before the blue square appears!</p>
         
-        <div style='float: center'>
-            <img src='img/BLUE_BLUE.png'; style="height:300; width:750px;"></img>
+        <div style='width: 800px; height: 380px;'>
+        <div style='float: left'>
+            <div style='width: 200px; height: 100px;'></div>
+            <img src='img/cue1_blue.png'></img>
+            
+            <p class='small'><strong>First cue: Prepare to press</strong></p>
+        </div>
+        <div style='float: right'><img src='img/cue2_blue.png'></img>
+        <p class='small'><strong>Second cue: Press the SPACE key as fast as possible</strong></p></div>
         </div>
 
         <p>Press any key to begin.</p>
