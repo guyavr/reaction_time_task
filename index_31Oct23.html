@@ -3,8 +3,6 @@
   <head>
     <title>Go/No-go</title>
     <script src="jspsych/jspsych.js"></script>
-    <script src="jspsych/plugin-fullscreen.js"></script>
-    <script src="jspsych/plugin-instructions.js"></script>
     <script src="jspsych/plugin-html-keyboard-response.js"></script>
     <script src="jspsych/plugin-image-keyboard-response.js"></script>
     <script src="jspsych/plugin-preload.js"></script>
@@ -24,7 +22,7 @@
     /* initialize jsPsych */
     var jsPsych = initJsPsych({
         on_finish: function() {
-            //jsPsych.data.displayData('csv');
+            jsPsych.data.displayData('csv');
         }
     });
 
@@ -32,27 +30,17 @@
     var preload = {
         type: jsPsychPreload,
         images: [
-            // instruction images
-            'img/cue1BLUE_cue2BLUE.png',
-
-            // task images
+            'img/BLUE_BLUE.png',
             'img/cue1_blue.png',
             'img/cue2_blue.png'
         ]
     };
     console.log(preload);
 
-    /* enter full screen mode */
-    var enter_fullscreen = {
-        type: jsPsychFullscreen,
-        fullscreen_mode: true
-    }
-    
     /* define welcome message trial */
     var welcome = {
-        type: jsPsychInstructions,
-        pages: ['Welcome to the experiment.'],
-        show_clickable_nav: true
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: "Welcome to the experiment. Press any key to begin."
     };
     
     /* define instructions trial */
@@ -64,7 +52,7 @@
         <p>Remember: Do NOT press SPACE until the blue square appears!</p>
         
         <div style='float: center'>
-            <img src='img/cue1BLUE_cue2BLUE.png'; style="height:300; width:750px;"></img>
+            <img src='img/BLUE_BLUE.png'; style="height:300; width:750px;"></img>
         </div>
 
         <p>Press any key to begin.</p>
@@ -96,16 +84,6 @@
         post_trial_gap: jsPsych.timelineVariable('isi'),
         data: {
             task: 'cue1'
-        },
-
-        on_start: function(data){
-            
-            var today = new Date();
-            var time_now = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
-            
-            data.Time_TrialStart = time_now
-
-            console.log("Start time: " + data.Time_TrialStart)
         }
 
     };
@@ -132,10 +110,6 @@
         },
         
         on_finish: function(data){
-            
-            var today = new Date();
-            var time_now = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "." + today.getMilliseconds();
-            
             data.TrialNum = data.trial_num
             data.Cue1_Stimulus = data.cue1_stimulus
             data.Cue1_Duration = data.cue1_duration
@@ -150,8 +124,6 @@
             data.IsCorrect = jsPsych.pluginAPI.compareKeys(data.response, data.correct_response) // change to incorporate reation time as well!!!
             
             data.RT = jsPsych.data.get().last(1).values()[0].rt
-
-            data.Time_TrialEnd = time_now
         }
         
     };
@@ -225,23 +197,14 @@
         }
     };
 
-    /* exit full screen mode */
-    var exit_fullscreen = {
-        type: jsPsychFullscreen,
-        fullscreen_mode: false,
-        delay_after: 0
-    }
-
     /* create timeline */
     var timeline = [];
     timeline.push(preload);
-    timeline.push(enter_fullscreen);
     timeline.push(welcome);
     timeline.push(instructions);
     timeline.push(experiment_procedure);
     timeline.push(save_data);
     timeline.push(debrief_block);
-    timeline.push(exit_fullscreen);
 
     console.log(timeline);
 
