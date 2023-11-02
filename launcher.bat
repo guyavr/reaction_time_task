@@ -16,7 +16,6 @@ set CUR_NN=%time:~3,2%
 
 set SUBFILENAME=%CUR_YYYY%%CUR_MM%%CUR_DD%-%CUR_HH%%CUR_NN%%CUR_SS%
 
-move /-Y "C:\Users\%username%\Downloads\*_go_nogo_calib_task_*.csv" "C:\Users\%username%\Starr Lab Dropbox\Projects\Go_NoGo\behavioral_data_%SUBFILENAME%.csv"
-
+move /-Y "C:\Users\%username%\Downloads\*_reaction_time_task_*.csv" "C:\Users\%username%\Starr Lab Dropbox\Projects\Go_NoGo\behavioral_data_%SUBFILENAME%.csv"
 start /b "" "C:\xampp\apache_stop.bat"
 :exit
